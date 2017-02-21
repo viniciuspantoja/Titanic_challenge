@@ -5,7 +5,7 @@ Created on Mon Feb 13 10:42:22 2017
 
 @author: ViniciusPantoja
 """
-
+#%%
 
 import pandas as pd
 import numpy as np
@@ -16,8 +16,8 @@ import re
 
 
 
-X = pd.read_csv('/Users/ViniciusPantoja/Dropbox/MOOC/Kaggle/Titanic/train.csv')
-Y = pd.read_csv('/Users/ViniciusPantoja/Dropbox/MOOC/Kaggle/Titanic/test.csv')
+X = pd.read_csv('path/train.csv')
+Y = pd.read_csv('path/test.csv')
 
 
 
@@ -125,10 +125,7 @@ for i in range (0,len(Z['Age'])):
         a = Z_Age_Missing[Z_Age_Missing.index == i]
         Z["Age"].iloc[i] = a.iloc[0]
 
-
-
-
-
+Z["Fare"] = Z['Fare'].fillna(Z["Fare"].mean() )
 
 Z = pd.get_dummies(Z)
 
@@ -149,3 +146,15 @@ X_train, X_test = train_test_split(X, test_size = 0.2, random_state = 42)
 Y_train = X_train.pop("Survived")
 Y_test = X_test.pop("Survived")
 Y = Y.drop('Survived', axis = 1)
+
+
+
+
+
+
+
+
+
+
+
+
